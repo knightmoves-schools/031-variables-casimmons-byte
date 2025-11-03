@@ -1,5 +1,2 @@
-let courseLength;
-var courseLength;
-courseLength = 20;
-
-document.getElementById('result').innerHTML = courseLength;
+let courseLength = 20;
+document.getElementById("result").innerHTML = courseLength;
