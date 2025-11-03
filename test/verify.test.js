@@ -41,16 +41,24 @@ afterEach(async () => {
 
 describe('the index.js file', () => {
   it('should define a variable named courseLength', async () => {
+    const courseLength = await page.evaluate(() => window.courseLength || undefined);
     const courseLength = await page.evaluate(() => courseLength);
     expect(courseLength).toBeDefined();
   });
+
   
   it('should assign courseLength to the number 20', async () => {
+    const courseLength = await page.evaluate(() => window.courseLength || undefined);
     const courseLength = await page.evaluate(() => courseLength);
     expect(courseLength).toBe(20);
   });
+
   
   it('should assign the innerHTML of the HTML element with the id result to the courseLength', async () => {
+    await page.waitForSelector('#result', { visible: true });
+
+    const innerHtml = await page.$eval('#result', (result) => result.innerHTML);
+    expect(innerHtml).toBe('20');
     const innerHtml = await page.$eval('#result', (result) => {
       return result.innerHTML;
     });
